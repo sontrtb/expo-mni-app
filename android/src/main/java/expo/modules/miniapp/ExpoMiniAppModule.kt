@@ -41,7 +41,7 @@ class ExpoMiniAppModule : Module() {
     View(ExpoMiniAppView::class) {
       // Defines a setter for the `url` prop.
       Prop("url") { view: ExpoMiniAppView, url: URL ->
-        view.webView.loadUrl(url.toString())
+        view.loadUrl(url.toString())
       }
       // Defines an event that the view can send to JavaScript.
       Events("onLoad")
