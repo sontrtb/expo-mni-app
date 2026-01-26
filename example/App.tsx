@@ -8,20 +8,11 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ExpoMiniAppView
-        url="https://www.example.com"
+        url="https://github.com/sontrtb/expo-mni-app"
         onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
         style={styles.view}
       />
     </SafeAreaView>
-  );
-}
-
-function Group(props: { name: string; children: React.ReactNode }) {
-  return (
-    <View style={styles.group}>
-      <Text style={styles.groupHeader}>{props.name}</Text>
-      {props.children}
-    </View>
   );
 }
 
@@ -41,7 +32,6 @@ const styles = {
   },
   container: {
     flex: 1,
-    backgroundColor: 'red',
   },
   view: {
     flex: 1,

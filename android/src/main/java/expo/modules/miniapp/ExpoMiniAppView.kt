@@ -14,7 +14,7 @@ class ExpoMiniAppView(context: Context, appContext: AppContext) : ExpoView(conte
   private val miniAppScreen = MiniAppScreen(context)
 
   fun loadUrl(url: String) {
-    miniAppScreen.webView.webView.loadUrl(url)
+    miniAppScreen.webView.loadUrl(url)
   }
 
   init {

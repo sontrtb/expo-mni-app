@@ -1,9 +1,10 @@
 package expo.modules.miniapp.screens
 
 import android.content.Context
+import android.webkit.WebView
 import android.widget.LinearLayout
+import expo.modules.miniapp.common.uiHelper.dp
 import expo.modules.miniapp.components.HeaderComponent
-import expo.modules.miniapp.components.WebViewComponent
 
 class MiniAppScreen(context: Context) : LinearLayout(context) {
     private val rootLayout = LinearLayout(context).apply {
@@ -14,9 +15,16 @@ class MiniAppScreen(context: Context) : LinearLayout(context) {
         )
     }
 
+    internal val webView = WebView(context).apply {
+        layoutParams = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            context.dp(700),
+            1f   // chiếm phần còn lại như 1 screen
+        )
+    }
+
     private val headerView = HeaderComponent(context)
     // func action
-    internal val webView = WebViewComponent(context)
 
     init {
         rootLayout.addView(headerView)
