@@ -8,7 +8,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ExpoMiniAppView
-        url="https://github.com/sontrtb/expo-mni-app"
+        url="https://mini-xapp.vercel.app"
         onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
         style={styles.view}
       />
