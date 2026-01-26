@@ -13,6 +13,8 @@ class HeaderComponent(context: Context) : LinearLayout(context) {
     resources.getIdentifier("status_bar_height", "dimen", "android")
   )
 
+  private var isBackButtonVisible = false
+
   private val backButton = ImageView(context).apply {
     setImageResource(android.R.drawable.ic_menu_revert)
 //    setColorFilter(Color.WHITE)
@@ -43,6 +45,10 @@ class HeaderComponent(context: Context) : LinearLayout(context) {
     setPadding(context.dp(12), context.dp(12), context.dp(12), context.dp(12))
   }
 
+  fun renderBackButton () {
+    backButton.visibility = if (isBackButtonVisible) VISIBLE else GONE
+  }
+
   init {
     layoutParams = LayoutParams(
       LayoutParams.MATCH_PARENT,
@@ -56,6 +62,11 @@ class HeaderComponent(context: Context) : LinearLayout(context) {
     addView(backButton)
     addView(titleView)
     addView(closeButton)
+  }
+
+  fun setBackButtonVisible(visible: Boolean) {
+    isBackButtonVisible = visible
+    renderBackButton()
   }
 
   fun setTitle(title: String) {
