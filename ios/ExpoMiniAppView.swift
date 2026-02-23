@@ -1,38 +1,41 @@
 import ExpoModulesCore
-import WebKit
 
-// This view will be used as a native component. Make sure to inherit from `ExpoView`
-// to apply the proper styling (e.g. border radius and shadows).
 class ExpoMiniAppView: ExpoView {
-  let webView = WKWebView()
-  let onLoad = EventDispatcher()
-  var delegate: WebViewDelegate?
-
-  required init(appContext: AppContext? = nil) {
-    super.init(appContext: appContext)
-    clipsToBounds = true
-    delegate = WebViewDelegate { url in
-      self.onLoad(["url": url])
+    
+    let headerView = UIHeaderMiniApp()
+    
+    required init(appContext: AppContext? = nil) {
+        super.init(appContext: appContext)
+        clipsToBounds = true
+        
+        backgroundColor = .systemBackground
+        setupHeader()
+        setupMiniApp()
     }
-    webView.navigationDelegate = delegate
-    addSubview(webView)
-  }
 
-  override func layoutSubviews() {
-    webView.frame = bounds
-  }
-}
-
-class WebViewDelegate: NSObject, WKNavigationDelegate {
-  let onUrlChange: (String) -> Void
-
-  init(onUrlChange: @escaping (String) -> Void) {
-    self.onUrlChange = onUrlChange
-  }
-
-  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
-    if let url = webView.url {
-      onUrlChange(url.absoluteString)
+    func setupHeader() {
+        addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.setTitle("Mini App")
+        
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
-  }
+
+    func setupMiniApp() {
+        let miniApp = MiniApp()
+        miniApp.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(miniApp)
+        
+        NSLayoutConstraint.activate([
+            miniApp.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            miniApp.leadingAnchor.constraint(equalTo: leadingAnchor),
+            miniApp.trailingAnchor.constraint(equalTo: trailingAnchor),
+            miniApp.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
 }

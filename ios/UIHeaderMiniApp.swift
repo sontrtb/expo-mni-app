@@ -42,7 +42,7 @@ class UIHeaderMiniApp: UIView {
         
         // Title label
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         titleLabel.textColor = .black
         
         // Add subviews
@@ -60,19 +60,19 @@ class UIHeaderMiniApp: UIView {
             // Back button constraints
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             backButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            backButton.widthAnchor.constraint(equalToConstant: 44),
-            backButton.heightAnchor.constraint(equalToConstant: 44),
+            backButton.widthAnchor.constraint(equalToConstant: 40),
+            backButton.heightAnchor.constraint(equalToConstant: 40),
             
             // Close button constraints
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             closeButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            closeButton.widthAnchor.constraint(equalToConstant: 44),
-            closeButton.heightAnchor.constraint(equalToConstant: 44),
+            closeButton.widthAnchor.constraint(equalToConstant: 40),
+            closeButton.heightAnchor.constraint(equalToConstant: 40),
             
             // Title label constraints
-            titleLabel.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 4),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: closeButton.leadingAnchor, constant: -8)
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: closeButton.leadingAnchor, constant: -4)
         ])
     }
     
